@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { get } from "../utils/httpClient";
 import styles from "./MovieDetails.module.css";
+import { connect } from "react-redux";
 
 export function MovieDetails() {
   const { movieId } = useParams();

@@ -1,28 +1,22 @@
-
-import styles from "./App.module.css";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import MovieDetails from "./pages/MovieDetails";
+import React from "react";
+import Favorites from "./components/Favorites/Favorites";
+import store from "./store/index";
+import { Route } from "react-router-dom";
+import  { Provider } from 'react-redux';
 import LandingPage from "./pages/LandingPage";
+import MovieDetails from "./pages/MovieDetails";
+import NavBar from "./components/NavBar";
 
-function App() {
+function App({result}) {
   return (
-    <Router>
-      <header className={styles.header}>
-        <Link to="/"><h1 className={styles.title}>NETFLEX</h1></Link>
-        
-      </header>
-      <main>
-      <Switch>
-          <Route path="/movie/:movieId"><MovieDetails /></Route>
-          <Route  exact path="/"><LandingPage /></Route>
-        </Switch>
-      </main>
-    </Router>
+      <Provider store={store}>
+        <React.Fragment>
+            <NavBar />
+            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/favorites" component={Favorites} />
+            <Route path="/movie/:movieId" component={MovieDetails} />
+        </React.Fragment>
+      </Provider>
   );
 }
 

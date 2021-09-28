@@ -1,12 +1,22 @@
 import React from 'react'
 import MoviesGrid from '../components/MoviesGrid'
-
-function LandingPage() {
+import { connect } from "react-redux";
+import Buscador from "../components/Buscador/Buscador"
+import ResultGrid from "../components/ResultGrid";
+function LandingPage({resultBusqueda}) {
     return (
-        <div>
-           <MoviesGrid />
+        <div> 
+           {resultBusqueda.length<1 && <MoviesGrid addToFav={true}/>
+            }
+            {resultBusqueda.length>1 && <ResultGrid addToFav={true}/>}
         </div>
     )
 }
 
-export default LandingPage
+var mapStateToProps=(state)=>{
+    return{
+        resultBusqueda: state.result
+    }
+}
+
+export default connect(mapStateToProps,{})(LandingPage)
