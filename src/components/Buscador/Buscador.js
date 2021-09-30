@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { connect } from "react-redux";
+
 import { useHistory } from 'react-router-dom';
 import './Buscador.css';
-import * as actionsCreators from '../../actions/index';
-import { bindActionCreators } from 'redux';
-function Buscador({fetchPost}) {
+
+
+function Buscador() {
   
   const [title, setTitle] = useState("")
   const history = useHistory();
@@ -14,7 +14,7 @@ function Buscador({fetchPost}) {
   }
   const handleSubmit=(x) =>{
     x.preventDefault();
-    fetchPost(title);
+    /* fetchPost(title); */
     history.push("/?search="+title)
   }
 
@@ -38,15 +38,8 @@ function Buscador({fetchPost}) {
     </div>
   );
 }
-function mapStateToProps(state){
-  return{
-    result: state.result
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionsCreators, dispatch);
-}
-export default connect(mapStateToProps,mapDispatchToProps)(Buscador)
+
+export default Buscador
 
 
 
