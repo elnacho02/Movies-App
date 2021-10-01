@@ -5,7 +5,7 @@ import styles from "../MoviesGrid.module.css";
 function Favorites({favorites}) {
     return (
         <ul className={styles.moviesGrid}>
-            {favorites.map(elem => <MovieCard key={elem.id} movie={elem} />
+            {favorites.map(elem => <MovieCard key={elem.id} movie={elem} rmvOfFav={true}/>
             )}
         </ul>
     )

@@ -15,6 +15,7 @@
     background-color: azure;
 }
 .addToFav{
+    font-size: 15px;
     background-color: transparent;
     color: rgb(255, 208, 0);
     border: none;
@@ -24,6 +25,20 @@
     margin-left: 10px;
 }
 .addToFav:hover{
+    transform: scale(1.8);
+    color: white;
+}
+.rmvOfFav{
+    background-color: transparent;
+    font-size: 25px;
+    color: rgb(255, 0, 0);
+    border: none;
+    position: absolute;
+    transform: scale(1.4);
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.rmvOfFav:hover{
     transform: scale(1.8);
     color: white;
 }

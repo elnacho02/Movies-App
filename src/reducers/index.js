@@ -21,7 +21,8 @@ const rootReducer=(state = initialState, action) => {
           result: action.post,
           
         }
-      case 'REMOVE_FAVORTIES':
+      case 'REMOVE_FAVORITES':
+        Swal.fire(action.post.title + " quitado de favoritos")
         return {
           ...state,
           favorites: state.favorites.filter(x => x.id !== action.post.id)

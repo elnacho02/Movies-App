@@ -18,6 +18,7 @@ export function MovieDetails() {
     return null;
   }
     const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
+    console.log(movie);
     return (
         <div className={styles.detailsContainer}>
             <img className={styles.col} src={imageUrl} alt={movie.title} />
@@ -28,6 +29,9 @@ export function MovieDetails() {
                 </p>
                 
                 <p>{movie.overview}</p>
+                
+                <span><i class="far fa-heart"></i> {movie.vote_average}/10</span>
+
                 
             </div>
         </div>

@@ -1,19 +1,17 @@
-import Swal from 'sweetalert2'
+
 import { Link } from "react-router-dom";
 import styles from "./MovieCard.module.css";
 import { connect } from "react-redux";
 import * as actionsCreators from "../actions/index";
 import { bindActionCreators } from 'redux';
 
-function MovieCard({movie, addToFav, addFavorites}){
+function MovieCard({movie, addToFav, rmvOfFav, addFavorites, removeFavorites}){
     const imageUrl = "https://image.tmdb.org/t/p/w300" + movie.poster_path;
-    function alert1(){
-        Swal.fire(movie.title + " agregado a favoritos");
-    }
-   
+
     return (
         <li className={styles.movieCard}>
             {addToFav && <button type="text" className={styles.addToFav} onClick={()=>(addFavorites(movie))}><i class="fas fa-star"></i></button>}
+            {rmvOfFav && <button type="text" className={styles.rmvOfFav} onClick={()=>(removeFavorites(movie))}><i class="fas fa-times"></i></button>}
             <Link to={"/movie/"+ movie.id}>
                 <img 
                     width={230} 

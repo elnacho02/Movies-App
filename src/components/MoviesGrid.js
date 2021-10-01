@@ -3,14 +3,12 @@ import { useLocation } from "react-router";
  import { get } from "../utils/httpClient"; 
 import MovieCard from "./MovieCard";
 import styles from "./MoviesGrid.module.css";
-import * as actionsCreators from '../actions/index';
-import { bindActionCreators } from 'redux';
-import { connect } from "react-redux";
+
 
 function useQuery(){
   return new URLSearchParams(useLocation().search)
 }
-function MoviesGrid({addToFav, result, fetchPost}){
+function MoviesGrid(){
    const [movies, setMovies] = useState([]);
     const query = useQuery();
     const search = query.get("search")
@@ -24,19 +22,10 @@ function MoviesGrid({addToFav, result, fetchPost}){
      
  return (
         <ul className={styles.moviesGrid}>
-            {movies.map(elem => <MovieCard key={elem.id} movie={elem} addToFav={addToFav}/>
+            {movies.map(elem => <MovieCard key={elem.id} movie={elem} addToFav={true}/>
             )}
         </ul>
     )
 }
 
-/* export default MoviesGrid; */
-function mapStateToProps(state){
-  return{
-    result: state.result
-  }
-}
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionsCreators, dispatch);
-}
-export default connect(mapStateToProps,mapDispatchToProps)(MoviesGrid)
+export default MoviesGrid
